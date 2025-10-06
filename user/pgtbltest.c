@@ -50,8 +50,10 @@ ugetpid_test()
         return err("child process failed");
       continue;
     }
-    if (getpid() != ugetpid())
-      return err("missmatched PID");
+    if (getpid() != ugetpid()) {
+      err("mismatched PID");
+      exit(1);
+    }
     exit(0);
   }
   printf("ugetpid_test: OK\n");
